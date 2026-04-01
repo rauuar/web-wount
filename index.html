@@ -465,7 +465,7 @@
 
             /* Hero */
             .hero {
-                height: 100dvh;
+                height: 130dvh;
             }
 
             .hero-title {
@@ -663,6 +663,40 @@
                 document.body.classList.remove('scrolled');
             }
         });
+
+        (function () {
+            const hero = document.querySelector('.hero');
+            const title = document.querySelector('.hero-title');
+
+            function stickyHeroTitle() {
+                if (window.innerWidth > 768) {
+                    title.style.position = '';
+                    title.style.bottom = '';
+                    title.style.top = '';
+                    title.style.left = '';
+                    title.style.transform = '';
+                    return;
+                }
+                const heroBottom = hero.getBoundingClientRect().bottom;
+                if (heroBottom > window.innerHeight) {
+                    title.style.position = 'fixed';
+                    title.style.bottom = '60px';
+                    title.style.top = 'auto';
+                    title.style.left = '50%';
+                    title.style.transform = 'translateX(-50%)';
+                } else {
+                    title.style.position = 'absolute';
+                    title.style.bottom = '60px';
+                    title.style.top = 'auto';
+                    title.style.left = '50%';
+                    title.style.transform = 'translateX(-50%)';
+                }
+            }
+
+            window.addEventListener('scroll', stickyHeroTitle, { passive: true });
+            window.addEventListener('resize', stickyHeroTitle, { passive: true });
+            stickyHeroTitle();
+        })();
     </script>
 </body>
 
