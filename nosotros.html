@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bount — Nosotros</title>
+    <meta name="theme-color" content="#111111">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --size-body: 15px;
+            --size-subtitle: 28px;
+            --size-title: 39px;
+            --size-display: 63px;
+        }
+
+        html, body {
+            background-color: #111;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            letter-spacing: -0.07em;
+        }
+
+        /* ── HEADER ── */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+        }
+
+        body.scrolled header,
+        header:hover {
+            background-color: var(--bg-color);
+            border-bottom-color: #e0e0e0;
+        }
+
+        .logo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .logo img {
+            height: 20px;
+            filter: invert(0);
+            transform: translateY(0);
+            transition: filter 0.4s ease;
+        }
+
+        body.scrolled .logo img,
+        header:hover .logo img {
+            filter: invert(0);
+        }
+
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #888;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: -0.07em;
+            transition: color 0.4s ease;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        nav a.active {
+            color: #000;
+        }
+
+        body.scrolled nav a,
+        header:hover nav a {
+            color: #888;
+        }
+
+        body.scrolled nav a:hover,
+        header:hover nav a:hover {
+            color: #000;
+        }
+
+        body.scrolled nav a.active,
+        header:hover nav a.active {
+            color: var(--accent-color);
+        }
+
+        .header-socials {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-socials img {
+            width: 24px;
+            height: auto;
+            cursor: pointer;
+            filter: invert(0);
+            transition: filter 0.4s ease, opacity 0.2s;
+        }
+
+        body.scrolled .header-socials img,
+        header:hover .header-socials img {
+            filter: invert(0);
+        }
+
+        .header-socials a:hover img {
+            opacity: 0.6;
+        }
+
+        /* ── PAGE ── */
+        .page {
+            background-color: var(--bg-color);
+            padding-top: 60px;
+        }
+
+        /* ── SECTION: INTRO ── */
+        .section-intro {
+            padding: 40px 20px 60px 20px;
+        }
+
+        .intro-tagline {
+            font-size: var(--size-display);
+            font-weight: 700;
+            letter-spacing: -0.07em;
+            line-height: 0.95;
+            margin: 0 0 50px 0;
+            max-width: 100%;
+        }
+
+        .intro-grid {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            padding: 0 60px;
+        }
+
+        .intro-image {
+            flex: 1.2;
+            background-color: #111;
+            aspect-ratio: 19 / 9;
+        }
+
+        .intro-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-top: 0;
+        }
+
+        .intro-text h2 {
+            font-size: var(--size-subtitle);
+            font-weight: 600;
+            letter-spacing: -0.07em;
+            line-height: 0.95;
+            margin: 0;
+        }
+
+        .intro-text p {
+            font-size: var(--size-body);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.07em;
+            color: #333;
+            margin: 0;
+        }
+
+        /* ── SECTION: VIDEO ── */
+        .section-video {
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 16 / 7;
+            position: relative;
+        }
+
+        .video-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #555;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-label::before,
+        .video-label::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1px;
+            background-color: #444;
+        }
+
+        /* ── SECTION: EXPERIENCIA ── */
+        .section-experience {
+            padding: 60px 20px;
+            background-color: var(--bg-color);
+        }
+
+        .experience-tagline {
+            font-size: var(--size-title);
+            font-weight: 700;
+            letter-spacing: -0.07em;
+            line-height: 0.95;
+            margin: 0 0 40px 0;
+            max-width: 100%;
+        }
+
+        .experience-images {
+            display: flex;
+            gap: 20px;
+        }
+
+        .experience-images .img-block {
+            flex: 1;
+            background-color: #111;
+            aspect-ratio: 4 / 3;
+        }
+
+        /* ── FOOTER ── */
+        .site-footer {
+            background-color: #111;
+            color: #fff;
+            padding: 60px 20px 40px 20px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+            gap: 40px;
+        }
+
+        .footer-logo img {
+            height: 22px;
+            filter: invert(1);
+        }
+
+        .footer-columns {
+            display: flex;
+            gap: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #555;
+            margin: 0 0 12px 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-col a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: -0.07em;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #aaa;
+        }
+
+        .footer-col p {
+            font-size: 13px;
+            color: #aaa;
+            margin: 0;
+            line-height: 1.7;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+            font-size: 10px;
+            color: #444;
+            letter-spacing: -0.01em;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            .intro-tagline {
+                font-size: 26px;
+            }
+
+            .intro-grid {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .intro-text h2 {
+                font-size: 22px;
+            }
+
+            .experience-tagline {
+                font-size: 22px;
+            }
+
+            .experience-images {
+                flex-direction: column;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .footer-columns {
+                flex-direction: column;
+                gap: 28px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="BOUNT">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html" class="active">Nosotros</a></li>
+
+            </ul>
+        </nav>
+        <div class="header-socials">
+            <a href="mailto:rulos2p@gmail.com"><img src="mail.png" alt="Email"></a>
+            <a href="https://www.instagram.com/bount_media/" target="_blank"><img src="insta.png" alt="Instagram"></a>
+        </div>
+    </header>
+
+    <div class="page">
+
+        <!-- SECCIÓN 1: INTRO -->
+        <section class="section-intro">
+            <p class="intro-tagline">Bount nació en Tijuana de una obsesión por el cine, la música y la necesidad de decir algo real. No somos una agencia. No ejecutamos briefs. Somos una marca en constante evolución que mezcla video, cultura e identidad — construida desde la frontera, para cualquier lugar del mundo.</p>
+            <div class="intro-grid">
+                <div class="intro-image"></div>
+                <div class="intro-text">
+                    <h2>¿Qué es Bount?</h2>
+                    <p>Siempre hubo algo que no podía apagar. De niño fueron los lápices, el piano, la pregunta de cómo alguien mete toda su vida dentro de una canción o una película. Nunca encontré la respuesta — pero aprendí a hacer la pregunta en video. La música llegó primero. No como fondo — como necesidad. Hay días en que no sé cómo explicar lo que siento, pero siempre hay una canción que ya lo dijo antes que yo. Eso me obsesionó. Esa capacidad de tocar a alguien sin tocarlo. El video llegó después, casi sin avisar. Editaba en la escuela porque no podía no hacerlo. Cobraba 500 pesos por trabajos que valían más — no en dinero, sino en lo que me enseñaban. Que el tiempo frente a una pantalla no se siente como trabajo cuando lo que construyes te pertenece. Un día las dos obsesiones colapsaron en una sola. No fue una decisión — fue una consecuencia. Así nació Bount. No como empresa, no como agencia. Como la única forma honesta que encontré de existir creativamente.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: VIDEO -->
+        <section class="section-video">
+            <span class="video-label">Video</span>
+        </section>
+
+        <!-- SECCIÓN 3: EXPERIENCIA -->
+        <section class="section-experience">
+            <p class="experience-tagline">No nos importa si terminas feliz, enojado, triste o incómodo. Nos importa que termines tocado. Que algo de lo que viste se quede contigo cuando ya no estés mirando la pantalla. Hoy demasiado contenido simplemente pasa — lo consumes y no sientes nada. Bount existe para hacer lo contrario.</p>
+            <div class="experience-images">
+                <div class="img-block"></div>
+                <div class="img-block"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="logo.png" alt="BOUNT">
+            </div>
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p>rulos2p@gmail.com<br>Instagram: @bount_media</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Ubicación</h4>
+                    <p>Tijuana, BC<br>México</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 BOUNT. Todos los derechos reservados.</span>
+            <span>Producción Audiovisual & Dirección de Video</span>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
