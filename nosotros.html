@@ -17,7 +17,8 @@
             --size-display: 63px;
         }
 
-        html, body {
+        html,
+        body {
             background-color: #111;
         }
 
@@ -26,7 +27,7 @@
             padding: 0;
             font-family: 'Inter', sans-serif;
             color: var(--text-color);
-            letter-spacing: -0.07em;
+            letter-spacing: -0.08em;
         }
 
         /* ── HEADER ── */
@@ -92,7 +93,7 @@
             font-size: 14px;
             font-weight: 500;
             text-transform: none;
-            letter-spacing: -0.07em;
+            letter-spacing: -0.08em;
             transition: color 0.4s ease;
         }
 
@@ -196,7 +197,7 @@
             font-size: var(--size-body);
             font-weight: 400;
             line-height: 1.15;
-            letter-spacing: -0.07em;
+            letter-spacing: -0.08em;
             color: #333;
             margin: 0;
         }
@@ -309,7 +310,7 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
-            letter-spacing: -0.07em;
+            letter-spacing: -0.08em;
             transition: color 0.2s;
         }
 
@@ -361,13 +362,29 @@
             position: absolute;
         }
 
-        .hamburger-btn span:nth-child(1) { transform: translateY(-6px); }
-        .hamburger-btn span:nth-child(2) { transform: translateY(0); }
-        .hamburger-btn span:nth-child(3) { transform: translateY(6px); }
+        .hamburger-btn span:nth-child(1) {
+            transform: translateY(-6px);
+        }
 
-        .hamburger-btn.open span:nth-child(1) { transform: translateY(0) rotate(45deg); }
-        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
-        .hamburger-btn.open span:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+        .hamburger-btn span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .hamburger-btn span:nth-child(3) {
+            transform: translateY(6px);
+        }
+
+        .hamburger-btn.open span:nth-child(1) {
+            transform: translateY(0) rotate(45deg);
+        }
+
+        .hamburger-btn.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-btn.open span:nth-child(3) {
+            transform: translateY(0) rotate(-45deg);
+        }
 
         .slide-menu {
             position: fixed;
@@ -398,7 +415,7 @@
             color: #000;
             font-size: 20px;
             font-weight: 400;
-            letter-spacing: -0.07em;
+            letter-spacing: -0.08em;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -413,32 +430,63 @@
             color: #999;
         }
 
-        .img-mobile { display: none; }
-        .img-desktop { display: block; }
+        .img-mobile {
+            display: none;
+        }
+
+        .img-desktop {
+            display: block;
+        }
 
         /* ── MOBILE ── */
         @media (max-width: 768px) {
-            .img-mobile { display: block; }
-            .img-desktop { display: none; }
+            .img-mobile {
+                display: block;
+            }
 
-            header { padding: 14px 16px; }
-            nav { display: none; }
-            .hamburger-btn { display: flex; }
-            .header-socials { gap: 14px; }
-            .header-socials img { width: 20px; }
-            .logo img { height: 16px; }
+            .img-desktop {
+                display: none;
+            }
 
-            nav { display: none; }
+            header {
+                padding: 14px 16px;
+            }
+
+            nav {
+                display: none;
+            }
 
             .hamburger-btn {
                 display: flex;
             }
+
+            .header-socials {
+                gap: 14px;
+            }
+
+            .header-socials img {
+                width: 20px;
+            }
+
+            .logo img {
+                height: 16px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hamburger-btn {
+                display: flex;
+            }
+
             .section-divider {
                 display: block;
                 border: none;
                 border-top: 1px solid #e0e0e0;
                 margin: 28px 0 0 0;
             }
+
             .intro-tagline {
                 font-size: 42px;
                 margin: 0;
@@ -541,14 +589,26 @@
 
         <!-- SECCIÓN 1: INTRO -->
         <section class="section-intro">
-            <p class="intro-tagline img-desktop">Bount nació en Tijuana de una obsesión por el cine, la música y la necesidad de decir algo real. No somos una agencia. No ejecutamos briefs. Somos una marca en constante evolución que mezcla video, cultura e identidad — construida desde la frontera, para cualquier lugar del mundo.</p>
-            <p class="intro-tagline img-mobile">Bount nació en Tijuana de una obsesión por el cine, la música y la necesidad de decir algo real. Somos una marca en constante evolución que mezcla video, cultura e identidad.</p>
+            <p class="intro-tagline img-desktop">Bount nació en Tijuana de una obsesión por el cine, la música y la
+                necesidad de decir algo real. No somos una agencia. No ejecutamos briefs. Somos una marca en constante
+                evolución que mezcla video, cultura e identidad — construida desde la frontera, para cualquier lugar del
+                mundo.</p>
+            <p class="intro-tagline img-mobile">Bount nació en Tijuana de una obsesión por el cine, la música y la
+                necesidad de decir algo real. Somos una marca en constante evolución que mezcla video, cultura e
+                identidad.</p>
             <hr class="section-divider">
             <div class="intro-grid">
                 <div class="intro-image"></div>
                 <div class="intro-text">
                     <h2>¿Qué es Bount?</h2>
-                    <p>Siempre hubo algo que no podía apagar. De niño fueron los lápices, el piano, la pregunta de cómo alguien mete toda su vida dentro de una canción o una película. Nunca encontré la respuesta — pero aprendí a hacer la pregunta en video. La música llegó primero. No como fondo — como necesidad. Hay días en que no sé cómo explicar lo que siento, pero siempre hay una canción que ya lo dijo antes que yo. Eso me obsesionó. Esa capacidad de tocar a alguien sin tocarlo. El video llegó después, casi sin avisar. Editaba en la escuela porque no podía no hacerlo. Cobraba 500 pesos por trabajos que valían más — no en dinero, sino en lo que me enseñaban. Que el tiempo frente a una pantalla no se siente como trabajo cuando lo que construyes te pertenece. Un día las dos obsesiones colapsaron en una sola. No fue una decisión — fue una consecuencia. Así nació Bount. No como empresa, no como agencia. Como la única forma honesta que encontré de existir creativamente.</p>
+                    <p>Siempre hubo algo que no podía apagar. De niño fueron los lápices, el piano, la pregunta de cómo
+                        alguien mete toda su vida dentro de una canción o una película. Nunca encontré la respuesta —
+                        pero aprendí a hacer la pregunta en video. La música llegó primero. No como fondo — como
+                        necesidad. Hay días en que no sé cómo explicar lo que siento, pero siempre hay una canción que
+                        ya lo dijo antes que yo. Eso me obsesionó. Esa capacidad de tocar a alguien sin tocarlo. El
+                        video llegó después, casi sin avisar. Un día las dos obsesiones colapsaron en una sola. No fue
+                        una decisión — fue una consecuencia. Así nació Bount. No como empresa, no como agencia. Como la
+                        única forma honesta que encontré de existir creativamente.</p>
                 </div>
             </div>
         </section>
@@ -558,7 +618,8 @@
             <span class="video-label">Video</span>
         </section>
 
-        <div style="background-color: #fff; height: 90px; display: flex; align-items: flex-end; justify-content: center;">
+        <div
+            style="background-color: #fff; height: 90px; display: flex; align-items: flex-end; justify-content: center;">
             <img src="East.png" alt="" class="easter-egg" style="height: 40px; display: block; margin-left: 500px;">
         </div>
 
@@ -602,7 +663,7 @@
             }
         });
 
-        document.getElementById('hamburgerBtn').addEventListener('click', function() {
+        document.getElementById('hamburgerBtn').addEventListener('click', function () {
             const isOpen = this.classList.toggle('open');
             document.getElementById('slideMenu').classList.toggle('open', isOpen);
             document.body.classList.toggle('menu-open', isOpen);
