@@ -667,11 +667,13 @@
         const nosotrosHeader = document.querySelector('header');
         window.addEventListener('scroll', () => {
             const currentY = window.scrollY;
-            if (currentY === 0) {
-                nosotrosHeader.classList.remove('hidden');
-            } else if (currentY > lastScrollY) {
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const delta = currentY - lastScrollY;
+            if (currentY <= 0 || currentY >= maxScroll - 2) {
+                // en extremos no hacer nada
+            } else if (delta > 5) {
                 nosotrosHeader.classList.add('hidden');
-            } else {
+            } else if (delta < -5) {
                 nosotrosHeader.classList.remove('hidden');
             }
             lastScrollY = currentY;
