@@ -44,17 +44,34 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 2000;
             box-sizing: border-box;
-            background-color: transparent;
-            border-bottom: 1px solid #222;
-            transition: background-color 0.4s ease, border-color 0.4s ease;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid #e0e0e0;
+            transition: none;
         }
 
         body.scrolled header,
         header:hover {
             background-color: var(--bg-color);
             border-bottom-color: #e0e0e0;
+        }
+
+        body.menu-open header {
+            background-color: var(--bg-color) !important;
+            border-bottom-color: #e0e0e0 !important;
+        }
+
+        body.menu-open .logo img {
+            filter: invert(0) !important;
+        }
+
+        body.menu-open .header-socials img {
+            filter: invert(0) !important;
+        }
+
+        body.menu-open .hamburger-btn span {
+            background-color: #222 !important;
         }
 
         .logo {
@@ -66,14 +83,15 @@
 
         .logo img {
             height: 20px;
-            filter: invert(1);
+            filter: invert(0);
             transform: translateY(0);
             /* Ajuste optico hacia abajo */
             transition: filter 0.4s ease;
         }
 
         body.scrolled .logo img,
-        header:hover .logo img {
+        header:hover .logo img,
+        body.menu-open .logo img {
             filter: invert(0);
         }
 
@@ -93,7 +111,7 @@
 
         nav a {
             text-decoration: none;
-            color: white;
+            color: #888;
             font-size: 14px;
             font-weight: 500;
             /* Medium */
@@ -107,7 +125,7 @@
         }
 
         nav a.active {
-            color: white;
+            color: #000;
         }
 
         body.scrolled nav a,
@@ -137,12 +155,13 @@
             width: 24px;
             height: auto;
             cursor: pointer;
-            filter: invert(1);
+            filter: invert(0);
             transition: filter 0.4s ease, opacity 0.2s;
         }
 
         body.scrolled .header-socials img,
-        header:hover .header-socials img {
+        header:hover .header-socials img,
+        body.menu-open .header-socials img {
             filter: invert(0);
         }
 
@@ -450,7 +469,7 @@
             display: block;
             width: 17px;
             height: 1px;
-            background-color: #fff;
+            background-color: #222;
             transition: background-color 0.4s ease, opacity 0.3s, transform 0.3s;
             position: absolute;
         }
@@ -464,44 +483,53 @@
         .hamburger-btn.open span:nth-child(3) { transform: translateY(0) rotate(-45deg); }
 
         body.scrolled .hamburger-btn span,
-        header:hover .hamburger-btn span {
+        header:hover .hamburger-btn span,
+        body.menu-open .hamburger-btn span {
             background-color: #222;
         }
 
         .slide-menu {
             position: fixed;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
-            height: 0;
+            height: 100dvh;
             background-color: #fff;
-            z-index: 999;
-            overflow: hidden;
-            transition: height 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 24px;
-            box-sizing: border-box;
+            z-index: 1999;
+            transition: left 0.4s ease;
         }
 
         .slide-menu.open {
-            height: 100%;
-            padding-top: 60px;
+            left: 0;
         }
 
         .slide-nav {
+            position: absolute;
+            top: 95px;
+            left: 24px;
+            right: 24px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
         }
 
         .slide-nav a {
             text-decoration: none;
             color: #000;
-            font-size: 36px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 400;
             letter-spacing: -0.07em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .slide-nav a::after {
+            content: '›';
+            font-size: 20px;
+            font-weight: 300;
+            color: #999;
         }
 
         .img-mobile { display: none; }
@@ -756,7 +784,9 @@
         document.getElementById('hamburgerBtn').addEventListener('click', function() {
             const isOpen = this.classList.toggle('open');
             document.getElementById('slideMenu').classList.toggle('open', isOpen);
-            document.getElementById('slideOverlay').classList.toggle('open', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+            if (isOpen) document.body.classList.add('scrolled');
+            else if (window.scrollY <= 50) document.body.classList.remove('scrolled');
         });
 
         (function () {
