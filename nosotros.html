@@ -44,7 +44,11 @@
             box-sizing: border-box;
             background-color: var(--bg-color);
             border-bottom: 1px solid #e0e0e0;
-            transition: none;
+            transition: transform 0.3s ease;
+        }
+
+        header.hidden {
+            transform: translateY(-100%);
         }
 
         body.scrolled header,
@@ -659,6 +663,19 @@
     </footer>
 
     <script>
+        let lastScrollY = window.scrollY;
+        const nosotrosHeader = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            const currentY = window.scrollY;
+            if (currentY === 0) {
+                nosotrosHeader.classList.remove('hidden');
+            } else if (currentY > lastScrollY) {
+                nosotrosHeader.classList.add('hidden');
+            } else {
+                nosotrosHeader.classList.remove('hidden');
+            }
+            lastScrollY = currentY;
+        });
 
         document.getElementById('hamburgerBtn').addEventListener('click', function () {
             const isOpen = this.classList.toggle('open');
