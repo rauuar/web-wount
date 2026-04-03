@@ -780,11 +780,15 @@
         let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
             const currentY = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const delta = lastScrollY - currentY;
             if (currentY === 0) {
                 document.body.classList.remove('scrolled');
-            } else if (currentY < lastScrollY) {
+            } else if (currentY >= maxScroll - 2) {
+                // al fondo, no hacer nada
+            } else if (delta > 5) {
                 document.body.classList.add('scrolled');
-            } else {
+            } else if (delta < -5) {
                 document.body.classList.remove('scrolled');
             }
             lastScrollY = currentY;
@@ -794,8 +798,7 @@
             const isOpen = this.classList.toggle('open');
             document.getElementById('slideMenu').classList.toggle('open', isOpen);
             document.body.classList.toggle('menu-open', isOpen);
-            if (isOpen) document.body.classList.add('scrolled');
-            else if (window.scrollY <= 50) document.body.classList.remove('scrolled');
+            if (!isOpen) document.body.classList.remove('scrolled');
         });
 
         (function () {
