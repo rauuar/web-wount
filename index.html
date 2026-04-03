@@ -76,6 +76,11 @@
             justify-content: flex-start;
         }
 
+        .logo a {
+            display: flex;
+            align-items: center;
+        }
+
         .logo img {
             height: 20px;
             filter: invert(1);
@@ -668,7 +673,7 @@
                 <span></span>
                 <span></span>
             </button>
-            <img src="logo.png" alt="BOUNT">
+            <a href="index.html"><img src="logo.png" alt="BOUNT"></a>
         </div>
         <nav>
             <ul>
@@ -694,7 +699,7 @@
             <!-- Columna 1 -->
             <div class="project-column">
                 <div class="project-item">
-                    <div class="project-img box-tall"><img src="vert-img.png" alt="Vertigo Taxi" class="img-desktop"><img src="vertigo-img.png" alt="Vertigo Taxi" class="img-mobile"></div>
+                    <div class="project-img box-tall" id="vertigoImg" style="cursor:pointer;"><img src="vert-img.png" alt="Vertigo Taxi" class="img-desktop"><img src="vertigo-img.png" alt="Vertigo Taxi" class="img-mobile"></div>
                     <div class="project-info">
                         <h3>Vertigo Taxi</h3>
                         <span class="year">2026</span>
@@ -772,14 +777,17 @@
     </footer>
 
     <script>
+        let lastScrollY = window.scrollY;
         window.addEventListener('scroll', () => {
-            const hero = document.querySelector('.hero');
-            const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 0;
-            if (window.scrollY + 1 >= heroBottom) {
+            const currentY = window.scrollY;
+            if (currentY === 0) {
+                document.body.classList.remove('scrolled');
+            } else if (currentY < lastScrollY) {
                 document.body.classList.add('scrolled');
             } else {
                 document.body.classList.remove('scrolled');
             }
+            lastScrollY = currentY;
         });
 
         document.getElementById('hamburgerBtn').addEventListener('click', function() {
@@ -819,6 +827,14 @@
             window.addEventListener('resize', stickyHeroTitle, { passive: true });
             stickyHeroTitle();
         })();
+
+        document.getElementById('vertigoImg').addEventListener('click', function() {
+            if (window.innerWidth > 768) {
+                window.location = 'vertigo-taxi.html';
+            } else {
+                window.open('https://youtu.be/MOhA_z-a5_Y?si=wAW-BjfBVCua5k-e', '_blank');
+            }
+        });
     </script>
 </body>
 
