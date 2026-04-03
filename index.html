@@ -51,10 +51,16 @@
         }
 
         body.scrolled header,
-        body.menu-open header,
-        header:hover {
+        body.menu-open header {
             background-color: var(--bg-color);
             border-bottom-color: #e0e0e0;
+        }
+
+        @media (hover: hover) {
+            header:hover {
+                background-color: var(--bg-color);
+                border-bottom-color: #e0e0e0;
+            }
         }
 
         body.menu-open .logo img {
@@ -88,9 +94,12 @@
         }
 
         body.scrolled .logo img,
-        body.menu-open .logo img,
-        header:hover .logo img {
+        body.menu-open .logo img {
             filter: invert(0);
+        }
+
+        @media (hover: hover) {
+            header:hover .logo img { filter: invert(0); }
         }
 
         nav {
@@ -126,21 +135,24 @@
         }
 
         body.scrolled nav a,
-        body.menu-open nav a,
-        header:hover nav a {
+        body.menu-open nav a {
             color: #888;
         }
 
         body.scrolled nav a:hover,
-        body.menu-open nav a:hover,
-        header:hover nav a:hover {
+        body.menu-open nav a:hover {
             color: #000;
         }
 
         body.scrolled nav a.active,
-        body.menu-open nav a.active,
-        header:hover nav a.active {
+        body.menu-open nav a.active {
             color: #000;
+        }
+
+        @media (hover: hover) {
+            header:hover nav a { color: #888; }
+            header:hover nav a:hover { color: #000; }
+            header:hover nav a.active { color: #000; }
         }
 
         .header-socials {
@@ -160,9 +172,12 @@
         }
 
         body.scrolled .header-socials img,
-        body.menu-open .header-socials img,
-        header:hover .header-socials img {
+        body.menu-open .header-socials img {
             filter: invert(0);
+        }
+
+        @media (hover: hover) {
+            header:hover .header-socials img { filter: invert(0); }
         }
 
         .header-socials a:hover img {
@@ -486,9 +501,12 @@
         .hamburger-btn.open span:nth-child(3) { transform: translateY(0) rotate(-45deg); }
 
         body.scrolled .hamburger-btn span,
-        body.menu-open .hamburger-btn span,
-        header:hover .hamburger-btn span {
+        body.menu-open .hamburger-btn span {
             background-color: #222;
+        }
+
+        @media (hover: hover) {
+            header:hover .hamburger-btn span { background-color: #222; }
         }
 
         .slide-menu {

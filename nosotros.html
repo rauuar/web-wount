@@ -44,11 +44,7 @@
             box-sizing: border-box;
             background-color: var(--bg-color);
             border-bottom: 1px solid #e0e0e0;
-            transition: transform 0.3s ease;
-        }
-
-        header.hidden {
-            transform: translateY(-100%);
+            transition: none;
         }
 
         body.scrolled header,
@@ -663,19 +659,6 @@
     </footer>
 
     <script>
-        let lastScrollY = window.scrollY;
-        const header = document.querySelector('header');
-        window.addEventListener('scroll', () => {
-            const currentY = window.scrollY;
-            if (currentY === 0) {
-                header.classList.remove('hidden');
-            } else if (currentY > lastScrollY) {
-                header.classList.add('hidden');
-            } else {
-                header.classList.remove('hidden');
-            }
-            lastScrollY = currentY;
-        });
 
         document.getElementById('hamburgerBtn').addEventListener('click', function () {
             const isOpen = this.classList.toggle('open');
