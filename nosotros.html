@@ -667,7 +667,9 @@
         const header = document.querySelector('header');
         window.addEventListener('scroll', () => {
             const currentY = window.scrollY;
-            if (currentY > lastScrollY) {
+            if (currentY === 0) {
+                header.classList.remove('hidden');
+            } else if (currentY > lastScrollY) {
                 header.classList.add('hidden');
             } else {
                 header.classList.remove('hidden');
